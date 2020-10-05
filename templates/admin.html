@@ -1,0 +1,157 @@
+{% extends '_layout.html' %}
+
+{% block title %}ADMIN{% endblock %}
+{% block content %}
+<div>
+    <span style="text-align:left;font-color:red;font-style:bold"><caption><span style="color:black"><h2>Data Management: {{searchtype}}</h2></span></caption></span>
+    <span style="text-align:left;font-color:red;font-style:bold"><caption><span style="color:maroon">Search</span></caption></span>
+<form action="{{ url_for('searchdata', productid=productid, searchtype=searchtype, p_ordernumber=p_ordernumber, p_subscribed=p_subscribed, p_startdate=p_startdate, p_enddate=p_enddate) }}" method="POST" class="ng-pristine ng-valid">
+           <table width="100%">
+            <tr>
+            <td style="width:15%">Order ID: <input style="width:100px" id="order_search" name="order_search" type="text" value="{{p_ordernumber}}"/></span></td>
+            <td style="width:15%">Subscribed:
+                <div class="radio-group">
+                <input type="radio" id="yes_subscribed" name="order_subscribed" value="0" >
+                <label for="yes_subscribed">No</label>
+                <input type="radio" id="no_subscribed" name="order_subscribed" value="1" >
+                <label for="no_subscribed">Yes</label>
+            </div>
+            </td>
+            <td style="width:40%">Date Start: <input style="width:100px" id="start_date" name="start_date" type="date" /> End: <input style="width:100px" id="end_date" name="end_date" type="date" /></span></td>
+            <td style="width:30%">Export:
+                <div class="radio-group">
+                <input type="radio" id="yes_export" name="file_export" value="0" >
+                <label for="yes_export">No</label>
+                <input type="radio" id="no_export" name="file_export" value="1" >
+                <label for="no_export">Yes</label>
+                </div>
+                <input id="bt_search" name="bt_search" value="search" type="submit" /></td>
+            </tr>
+           </table>
+</form>
+<br/>
+{% if searchtype == 'Orders' %}
+    <table style="width:100%;font-color:black;background-color:lightslategray">
+    <tr>
+        <th style="width:10%"><label>record id</label></th>
+        <th style="width:20%"><label>order id</label></th>
+        <th style="width:30%"><label>purchase date</label></th>
+        <th style="width:20%"><label>status</label></th>
+        <th style="width:20%"><label>total</label></th>
+    </tr>
+    {% for odx in orderslist %}
+    <tr>
+    <td style="width:10%">{{odx['id']}}</td>
+    <td style="width:20%">{{odx['AmazonOrderId']}}</td>
+    <td style="width:30%">{{odx['PurchaseDate']}}</td>
+    <td style="width:30%">{{odx['OrderStatus']}}</td>
+    <td style="width:20%">{{odx['OrderTotal_CurrencyCode']}} {{odx['OrderTotal_Amount']}}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if searchtype == 'Buyers' %}
+   <table style="width:100%;font-color:black;background-color:lightslategray">
+    <tr>
+        <th style="width:10%"><label>record id</label></th>
+        <th style="width:20%"><label>order id</label></th>
+        <th style="width:30%"><label>name</label></th>
+        <th style="width:20%"><label>subscribe date</label></th>
+        <th style="width:20%"><label>subscribed</label></th>
+    </tr>
+    {% for byx in buyerslist %}
+    <tr>
+    <td style="width:10%">{{byx['id']}}</td>
+    <td style="width:20%">{{byx['AmazonOrderId']}}</td>
+    <td style="width:30%">{{byx['Buyer_Name']}}</td>
+    <td style="width:30%">{{byx['Subscribed_On']}}</td>
+    <td style="width:30%">{{byx['Is_Subscribed']}}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if searchtype == 'Products' %}
+<table width="100%">
+    <tr>
+        <th style="color:#6a5acd;" align="left" colspan="8"><span style="color:maroon">[Products]: <a href="{{ url_for('searchdata', productid=productid, searchtype='ProductsNew', p_subscribed=p_subscribed, p_ordernumber=p_ordernumber, p_startdate=p_startdate, p_enddate=p_enddate) }}"><img id="pnew_create_1" src="/static/images/project.png" width="30" height="30" /></a></span></th>
+    </tr>
+    <tr>
+        <td style="width:3%"></td>
+        <td style="width:3%"></td>
+        <td style="width:4%"><label>ID</label></td>
+        <td style="width:40%"><label>TITLE</label></td>
+        <td style="width:10%"><label>ASIN</label></td>
+        <td style="width:20%"><label>ADDED BY</label></td>
+        <td style="width:10%"><label>ADDED ON</label></td>
+        <td style="width:10%"><label>DELETED</label></td>
+    </tr>
+
+{% for produx in productslist %}
+    <tr>
+    <td style="width:3%"><a href="{{ url_for('searchdata', productid=produx['prod_id'], searchtype='ProductsEdit', p_subscribed='0', p_ordernumber='0', p_startdate='0', p_enddate='0') }}"><img id="pedt_{{produx['prod_id']}}" src="/static/images/btedit.png" width="30" height="30" /></a></td>
+    <td style="width:3%"><a href="{{ url_for('deleteproduct', productid=produx['prod_id']) }}"><img id="pdel_{{produx['prod_id']}}" src="/static/images/btdelete.png" width="30" height="30" /></a></td>
+    <td style="width:4%">{{produx['prod_id']}}</td>
+    <td style="width:40%">{{produx['title']}}</td>
+    <td style="width:10%">{{produx['asin']}}</td>
+    <td style="width:20%">{{produx['added_by']}} &nbsp;</td>
+    <td style="width:10%">{{produx['added_on']}} &nbsp;</td>
+    <td style="width:10%">{{produx['is_deleted']}} &nbsp;</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if searchtype == 'ProductsNew' %}
+<form action="{{ url_for('saveproduct') }}" method="post" enctype="multipart/form-data">
+    <span style="text-align:left;font-color:red;font-style:bold"><caption>New <span style="color:maroon">[Product]</span></caption></span>
+   <table style="width:100%;font-color:black;background-color:lightslategray">
+    <tr>
+        <td style="width:20%"><label>Title</label></td>
+        <td style="width:30%"><input id="px_title" name="px_title" type="text" /></td>
+        <td style="width:20%"><label>ASIN</label></td>
+        <td style="width:30%"><input id="px_asin" name="px_asin" type="text" /></td>
+    </tr>
+    <tr>
+        <td style="width:20%"><label>Image URL</label></td>
+        <td style="width:30%"><input id="px_url" name="px_url" type="text" /></td>
+        <td style="width:20%"><label>DELETE State</label></td>
+        <td style="width:30%"><input id="px_deleted" name="px_deleted" type="checkbox" value="1" /></td>
+    </tr>
+    </tr>
+       <tr>
+        <td style="width:20%"></td>
+            <td style="width:30%"><input type=submit value="Save"></td>
+    </tr>
+</table>
+    </form>
+{% endif %}
+
+{% if searchtype == 'ProductsEdit' %}
+<form action="{{ url_for('editproduct', productid=dataproduct['prod_id']) }}" method="post" enctype="multipart/form-data">
+    <span style="text-align:left;font-color:red;font-style:bold"><caption>EDIT <span style="color:maroon">[Product]</span></caption></span>
+   <table style="width:100%;font-color:black;background-color:lightslategray">
+    <tr>
+        <td style="width:20%"><label>Title</label></td>
+        <td style="width:30%"><input id="epx_title" name="epx_title" type="text" value="{{dataproduct['title']}}" /></td>
+        <td style="width:20%"><label>ASIN</label></td>
+        <td style="width:30%"><input id="epx_asin" name="epx_asin" type="text" value="{{dataproduct['asin']}}" /></td>
+    </tr>
+    <tr>
+        <td style="width:20%"><label>Image URL</label></td>
+        <td style="width:30%"><input id="epx_url" name="epx_url" type="text" value="{{dataproduct['image']}}" /></td>
+        <td style="width:20%"><label>DELETE State {{dataproduct['is_deleted']}}</label></td>
+        <td style="width:30%"><input id="epx_deleted" name="epx_deleted" type="checkbox" value="1" /></td>
+    </tr>
+    </tr>
+       <tr>
+        <td style="width:20%"></td>
+            <td style="width:30%"><input type=submit value="UPDATE"></td>
+    </tr>
+</table>
+    </form>
+{% endif %}
+
+</div>
+{% endblock %}

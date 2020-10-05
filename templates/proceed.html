@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="wrapper">
+        <header class="header clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-push-4">
+                        <div class="logo">
+                            <a href="/">
+                                <!--img src=img/logo.png'?>" alt="logo"-->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+	  <div class="content clearfix ">
+
+                <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img width="555" height="370" src="/static/img/img4.jpg" class="img-homepage wp-post-image" />
+            </div>
+            <div class="col-md-6">
+                <div class="content-homepage">
+                    <h2>Before proceeding,<br />
+                        Please read and agree to the terms and conditions.</h2>
+                        <p>The conditions to qualify for our promotion are:</p>
+                        <ul>
+                        <li><span style="color: #ff0000;">You have actively used the product for at least <strong>7</strong> days or more depending on the product, to ensure long enough product experience.</span></li>
+                        <li>You agree to send us your experience with the product.</li>
+                        <li>Limited to one free bottle per household.</li>
+                        <li>Please allow 7-10 business days for delivery of your free product.</li>
+                        <li>Only valid for full price purchases at our Official Seller on Amazon.com.</li>
+                        <li>Daily offers are very limited, on a first come - first serve basis.</li>
+                        </ul>
+                        <h4><span style="color: #339966;">If you came too early, don&#8217;t worry, just come back in a few days and we will be able to process your request.</span></h4>
+                        <h4><span style="color: #339966;">Leave your phone number and we will send you a reminder text to let you know when you are eligible.</span></h4>
+                        <p><a class="btn btn-yellow btn-homepage" href="{{ url_for('products', productid=0, orderno=0) }}">I AGREE</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+	 </div>
+    </div>
+ </div>
+{% endblock %}

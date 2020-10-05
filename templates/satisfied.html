@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+ <div class="main">
+        <div class="wrapper">
+            <header class="header clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <div class="logo">
+                                <a href="/">
+                                    <!--img src="<?php echo $baseurl.'asset/img/logo.png'?>" alt="logo"-->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+  <div class="content clearfix" ng-show='show_dash==4'>
+
+            <div class="container">
+
+        <div class="row">
+<form action="{{ url_for('savereview') }}" method="POST" class="ng-pristine ng-valid">
+            <div class="col-sm-6">
+                <div class="order-text">
+                    <img class="selected-product-img" alt="Product Image"  src="https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN={{product['ASIN']}}&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=SL500" >
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+<h3>Are you satisfied with our product?</h3>
+    <div class="radio-group">
+    <input type="radio" id="option-one" name="selector" value="1" ng-model="filter.satisfied">
+    <label for="option-one">I hate it</label>
+
+    <input type="radio" id="option-two" name="selector" value="2" ng-model="filter.satisfied">
+    <label for="option-two">I don't like it</label>
+
+    <input type="radio" id="option-three" name="selector" value="3" ng-model="filter.satisfied">
+    <label for="option-three">it's ok</label>
+
+    <input type="radio" id="option-four" name="selector" value="4" ng-model="filter.satisfied">
+    <label for="option-four">I like it</label>
+
+    <input type="radio" id="option-five" name="selector" value="5" ng-model="filter.satisfied">
+    <label for="option-five">I love it</label>
+  </div>
+
+<span id="e12" class="error">Required Field</span>
+  <h4 style="margin-top:10px;">Describe how our product is working for you</h4>
+  <p style="margin-bottom:0px;">Please be specific</p>
+  <textarea id="rev_comment" name="rev_comment" rows="6" cols="65" style="color:#333" class="ng-pristine ng-untouched ng-valid ng-empty"></textarea>
+
+  <span id="e13" class="error">Required Field</span>
+
+  <p>A minimum of 50 characters is required,but please be as detailed as possible</p>
+
+   <h4 style="margin-top:10px;">How likely you will buy this product again?</h4>
+
+<div class="row">
+   <div class="col-sm-6">
+     <p style="color:blue;margin-top:10px;text-align:left">1 = Not at all likely</p>
+    </div>
+     <div class="col-sm-6">
+       <p style="color:blue;margin-top:10px;text-align:right">10 = Extremely likely</p>
+    </div>
+   </div>
+
+     <div class="radio-group">
+    <input type="radio" id="option-ones" name="selector1" value="1" ng-model="filter.buy_product">
+    <label for="option-ones">1</label>
+
+    <input type="radio" id="option-twos" name="selector1" value="2" ng-model="filter.buy_product">
+    <label for="option-twos">2</label>
+
+    <input type="radio" id="option-threes" name="selector1" value="3" ng-model="filter.buy_product">
+    <label for="option-threes">3</label>
+
+    <input type="radio" id="option-fours" name="selector1" value="4" ng-model="filter.buy_product">
+    <label for="option-fours">4</label>
+
+    <input type="radio" id="option-fives" name="selector1" value="5" ng-model="filter.buy_product">
+    <label for="option-fives">5</label>
+
+    <input type="radio" id="option-six" name="selector1" value="6" ng-model="filter.buy_product">
+    <label for="option-six">6</label>
+
+    <input type="radio" id="option-seven" name="selector1" value="7" ng-model="filter.buy_product">
+    <label for="option-seven">7</label>
+
+    <input type="radio" id="option-eight" name="selector1" value="8" ng-model="filter.buy_product">
+    <label for="option-eight">8</label>
+
+    <input type="radio" id="option-nine" name="selector1" value="9" ng-model="filter.buy_product">
+    <label for="option-nine">9</label>
+
+    <input type="radio" id="option-ten" name="selector1" value="10" ng-model="filter.buy_product">
+    <label for="option-ten">10</label>
+  </div>
+
+   <span id="e14" class="error">Required Field</span>
+
+
+<button href="" type="submit"  id="btn2" class="btn btn-yellow" style="margin-top:10px;">Submit My Experience</button>
+
+            </div>
+    </form>
+
+        </div>
+
+</div> </div>
+
+    </div>
+ </div>
+{% endblock %}

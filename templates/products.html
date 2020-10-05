@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+ <div class="main">
+        <div class="wrapper">
+            <header class="header clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-push-4">
+                            <div class="logo">
+                                <a href="/">
+                                    <!--img src="<?php echo $baseurl.'asset/img/logo.png'?>" alt="logo"-->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+	  <div class="content clearfix " ng-show="show_dash==2">
+
+                <div class="container">
+<h1 class="center">Choose your free product:</h1>
+					<div class="services-container">
+					<div class="row">
+
+{% for prod in products %}
+<div class="col-md-4 col-sm-6">
+<div class="service">
+<form action="{{ url_for('ordernumber', productid=prod['prod_id'], orderno=0) }}" method="POST" class="ng-pristine ng-valid">
+
+		         <figure>
+            <img class="free_product_image" alt="Product Image"  src="/static/images/{{prod['image']}}" >
+				    </figure>
+                <h4 style="color:#333">{{prod['title']}}</h4
+					</h4>
+
+    <input id="selprod_{{prod['prod_id']}}" type="submit" value="Select Product" class="btn btn-yellow btn-homepage">
+	        </form>
+</div>
+</div>
+{% endfor %}
+	    </div>
+	   </div>
+    </div>
+	 </div>
+
+</div>
+ </div>
+{% endblock %}

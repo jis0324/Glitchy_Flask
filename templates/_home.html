@@ -1,0 +1,148 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+    <p style="text-align:center;font-weight:bold;color:#228b22;">labourer:R2 pd || farm-worker:R10 pd || factory-worker:R20 || mining-worker:R50 pd || total FDUs: {{ "{:0,.2f}".format(totalfdu) }}</p>
+<div>
+    <h4 style="color:#c71585;">Account Information: {{ username }}</h4>
+    <table width="100%">
+        <tr>
+        <th style="color:#6a5acd;" align="left" colspan="6">cash accounts</th>
+        </tr>
+        <tr>
+            <td width="16%"><strong>cash balance:</strong></td>
+            <td style="font-weight:bold;color:red;" width="16%">R{{ "{:0,.2f}".format(cashbal['amount']) }}</td>
+            <td width="16%"><strong>loan offer:</strong></td>
+            <td style="font-weight:bold;color:red;" width="16%">R{{ "{:0,.2f}".format(loanoffer['amount']) }}</td>
+            <td width="16%"><strong>loan balance:</strong></td>
+            <td style="font-weight:bold;color:red;" width="16%">R{{ "{:0,.2f}".format(loanbal['amount']) }}</td>
+        </tr>
+    </table>
+        <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">farm square metres</th>
+            </tr>
+            <tr>
+  {% for land in userlands %}
+            <td width="16%"><strong>{{land['landtype']}}:</strong></td>
+            <td width="16%">{{ "{:0,.2f}".format(land['sqmetres']) }}</td>
+  {% endfor %}
+            </tr>
+    </table>
+        <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;"  align="left" colspan="6">warehouse square metres</th>
+            </tr>
+            <tr>
+  {% for store in userstorages %}
+            <td width="16%"><strong>{{store['storagetype']}}:</strong></td>
+            <td width="16%">{{ "{:0,.2f}".format(store['sqmetres']) }}</td>
+  {% endfor %}
+            </tr>
+    </table>
+        <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">mining square metres</th>
+            </tr>
+            <tr>
+  {% for mine in userminings %}
+            <td width="16%"><strong>{{mine['mineraltype']}}:</strong></td>
+            <td width="16%">{{ "{:0,.2f}".format(mine['sqmetres']) }}</td>
+  {% endfor %}
+            </tr>
+    </table>
+        <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">accommodation square metres</th>
+            </tr>
+            <tr>
+  {% for accomm in useraccomms %}
+            <td width="16%"><strong>{{accomm['accommtype']}}:</strong></td>
+            <td width="16%">{{ "{:0,.2f}".format(accomm['sqmetres']) }}</td>
+  {% endfor %}
+            </tr>
+    </table>
+        <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">employees</th>
+            </tr>
+            <tr>
+  {% for employee in employees %}
+            <td width="16%"><strong>{{employee['employeetype']}}:</strong></td>
+            <td width="16%">{{ "{:0,.2f}".format(employee['number']) }}</td>
+  {% endfor %}
+            </tr>
+    </table>
+</div>
+<div>
+            <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">transactions</th>
+            </tr>
+            <tr>
+              <td width="16%"><strong>transfer from:</strong></td>
+                <td width="16%"><select name="transfer_from" method="GET" action="/">
+                    <option value="cash_account" SELECTED>cash account</option>
+                    <option value="loan_offer">loan offer</option>
+                    <option value="loan_balance">loan balance</option>
+                </select></td>
+              <td width="16%"><strong>transfer to:</strong></td>
+                <td width="16%"><select name="transfer_to" method="GET" action="/">
+                    <option value="cash_account" SELECTED>cash account</option>
+                    <option value="loan_offer">loan offer</option>
+                    <option value="loan_balance">loan balance</option>
+                </select></td>
+                <td width="16%"><input type="text" id ="transfer_amount" value="" /></td>
+                <td width="16%"><input type="submit" value="Transfer"></td>
+            </tr>
+    </table>
+            <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">hire employees</th>
+            </tr>
+            <tr>
+              <td width="16%"><strong>assign:</strong></td>
+                <td width="16%"><select name="assign_type" method="GET" action="/">
+                    <option value="labourer" SELECTED>labourer</option>
+                    <option value="farm-worker">farm-worker</option>
+                    <option value="factory-worker">factory-worker</option>
+                    <option value="mining-worker">mining-worker</option>
+                </select></td>
+              <td width="16%"><strong>assign to:</strong></td>
+                <td width="16%"><select name="assign_to" method="GET" action="/">
+                    <option value="accommo_unit" SELECTED>accommodation</option>
+                    <option value="farm_unit">farm unit</option>
+                    <option value="factory_unit">factory unit</option>
+                    <option value="mining_unit">mining unit</option>
+                </select></td>
+                <td width="16%"><input type="text" id ="employee_number" value="" /></td>
+                <td width="16%"><input type="submit" value="Assign"></td>
+            </tr>
+    </table>
+            <table width="100%">
+            <tr>
+            <th style="color:#6a5acd;" align="left" colspan="6">buy/sell square metres</th>
+            </tr>
+            <tr>
+                <td width="16%"><select name="buy_sell" method="GET" action="/">
+                    <option value="buy" SELECTED>buy</option>
+                    <option value="sell">sell</option>
+                </select></td>
+                <td width="16%"><select name="metre_type" method="GET" action="/">
+                    <option value="farm_unit" SELECTED>farm unit</option>
+                    <option value="factory_unit">factory unit</option>
+                    <option value="mining_unit">mining unit</option>
+                </select></td>
+              <td width="16%"><strong>quantity:</strong></td>
+                <td width="16%"><select name="metre_level" method="GET" action="/">
+                    <option value="10-sqm" SELECTED>10-sqm</option>
+                    <option value="100-sqm">100-sqm</option>
+                    <option value="1000-sqm">1000-sqm</option>
+                </select></td>
+                <td width="16%"><input type="text" id ="metre_quantity" value="" /></td>
+                <td width="16%"><input type="submit" value="Action"></td>
+            </tr>
+    </table>
+</div>
+
+{% endblock %}

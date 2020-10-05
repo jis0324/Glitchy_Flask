@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="wrapper">
+        <header class="header clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-push-4">
+                        <div class="logo">
+                            <a href="/">
+                                <!--img src=img/logo.png'?>" alt="logo"-->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+      <div class="content home-page clearfix">
+       <div class="promo-full" style="background-image: url('/static/img/banner.jpg');">
+            <div class="container">
+                 <div class="row">
+                    <div class="col-lg-5 col-md-7">
+                        <div class="promo-full-text">
+                            <h1>Share your Experience with our Products and get a FREE GIFT</h1>
+                            <h5>NO Shipping Charges, NO Hidden Fees,<br />
+                            NO Credit Card Required!</h5>
+                            <p>* Conditions Apply: Limited to one free gift per Amazon account and household. Offer valid only for full price purchases at our Official Seller(s) on Amazon.com.</p>
+                            <p>To qualify, participants agree to send us their experience with the previously purchased product that they have been actively using for at least 7 days or more depending on the product to ensure long enough product experience.</p>
+                                                </div>
+                                        </div>
+                            <div class="col-lg-5 col-lg-push-2 col-md-5">
+                                <form action="{{ url_for('proceed', productid=0, orderno='0', userguid='0') }}"  method="post" class="promo-form">
+                                    <div class="center">
+                                        <h4 style="color:#dfae34;">Claim Your FREE GIFT!</h4>
+                                        <p>Fill this Form to Receive a FREE GIFT*<br />
+                                            Offer Limited to Existing Customers</p>
+                                    </div>
+                                    <input type="text" name="fname" placeholder="Full Name" required value="" >
+                                    <input type="text" name="lname" placeholder="Last Name" required value="">
+                                    <input type="email" name="email" placeholder="Email Address" required value="">
+                                    <input type="tel" name="tel" placeholder="Telephone Number" required value="">
+                                    <button type='submit' class='btn btn-yellow'>GET MY FREE GIFT!</button>
+                                    <p><small>* We don't share your personal info with anyone.</small></p>
+                                </form>
+                            </div>
+                    </div>
+            </div>
+    </div>
+
+     <div class="promo-items">
+        <div class="container">
+            <h2>Get your FREE Bottle, in 3 Simple Steps</h2>
+            <div class="promo-items-list">
+                <div class="promo-items-item"><img src="/static/img/img1.png" alt="Fill out the Online Form"><h5>Fill out the Online Form</h5><p>The first step to receive your FREE Bottle is to complete the form in this page. This offer is valid only for customers that bought the product at full price, at our Official Seller on Amazon.com</p></div><div class="promo-items-item"><img src="/static/img/img2.jpg" alt="Share your Experience"><h5>Share your Experience</h5><p>After filling the form you will be asked to share your experience with us, with your previously purchased product. Sharing your experience will help other customers in the same situation achieve desired results.</p></div><div class="promo-items-item"><img src="/static/img/img3.jpg" alt="Receive your FREE Bottle"><h5>Receive your FREE Bottle</h5><p>If you qualify for a FREE Bottle we will ship it within 48 hours and we will send a confirmation email with a tracking number. Yes! We will pay for the shipping too! You will receive your bottle within 7 to 10 business days.</p></div>                </div>
+        </div>
+     </div>
+
+     <div class="promo-faq">
+        <div class="container">
+            <h3>Frequently Asked Questions</h3>
+            <div class="promo-faq-list">
+                <div class="promo-faq-item"><h6>Is it really FREE? Or do I have to pay anything?</h6><p>There is absolutely NO charge, NO hidden fees, NO trial subscription and even NO credit card required for our existing customers. We will even cover for the shipping cost.</p></div><div class="promo-faq-item"><h6>So, what's the catch? Do I have to do something?</h6><p>The only thing we ask, is that you agree to send us your experience with the purchased product. Sharing your experience will help other customers in the same situation.</p></div><div class="promo-faq-item"><h6>What are the conditions to qualify for the promotion?</h6><p>This offer is valid only for customers that bought the product at full price, at our Official Seller on Amazon.com. Other Conditions Apply.</p></div><div class="promo-faq-item"><h6>How long will it take to receive my FREE Bottle?</h6><p>If you qualify for a FREE Bottle we will ship it within 48hs and we will send a confirmation email with a tracking number. You will receive it within 7 to 10 business days.</p></div>                </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+<div class="main">
+<div class="wrapper">
+<div class="content clearfix" ng-show="show_dash==3">
+    <div class="container">
+    <div class="products">
+    <h2>Enter the order ID of your Amazon purchase</h2>
+    <h5>It will look something like ###-#######-#######, and you can find it in your order history or in your order confirmation email. Please enter your Order ID including all dashes.</h5>
+    <div class="col-sm-12 center">
+        <form action="{{ url_for('updateorderinfo') }}" method="POST" class="order-form">
+            <input type="text" id="orderid" name="orderid" placeholder="Enter Order ID (Example: 112-1454151-2515)" required="">
+            <p class="order-form-error"></p>
+            <button type="submit" class="btn btn-yellow">CONTINUE</button>
+            <p>
+                <h5>Where can I find my Amazon Order ID?</h5>
+                <ul class="text-left">
+            <li>In your order confirmation email.</li>
+            <li>In the receipt that came in the box with your Get Back Gorgeous product.</li>
+            <li>In your Amazon account order history.</li>
+
+            </ul>
+            </p>
+                </form>
+            </div>
+    </div>
+</div>
+</div>
+</div>
+ </div>
+{% endblock %}

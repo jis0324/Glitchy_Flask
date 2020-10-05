@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+ <div class="main">
+    <div class="wrapper">
+ <div class="content clearfix "  ng-show='show_dash==5'>
+
+                <div class="container">
+
+	  <div class="products">
+
+						<h3>Share Your Experience With No nothing</h3>
+
+						<p><i>It only takes a few seconds- It's not mandatory but it helps other people with their buying decisions and also helps us to keep offering these premium promotions to our prefered customers </i></p>
+
+</div>
+
+ <div class="row" style="margin-top: 30px;">
+     <table width="80%" align="center">
+         <tr>
+           <div class="text" style="text-align: center;">
+                 <h4 >" <span  id="copy-text">{{comment}}</span> "</h4>
+				<!-- <p id="copy-text">Test Describe of the new product of the value</p> -->
+            </div>
+         </tr>
+         <tr>
+        <td style="width:50%;text-align:center">
+        <div>
+
+       <div class="col-md-12 copy_text">
+         <center>
+             <button type="button" class="btn cls_007"><i class="fa fa-clipboard" style="padding-right: 8px;"></i>Copy Experience to the Clipboard</button>
+         </center>
+       </div>
+    </div>
+    </td>
+        <td style="width:50%;text-align:center">
+        <div>
+ <div class="order-form" style="text-align: center;">
+
+<div style="text-align:center;" class="cls_007"><span class="cls_007"><a target="_blank" href="{{ url_for('amazonreview') }}" class="btn btn-yellow"  id="myBtn">Click here to post your review</a></span></div>
+</div>
+</div>
+    </td>
+</tr>
+         <tr>
+             <td colspan="2" style="text-align:center" align="center">
+             <img src="/static/img/amazon.png" style="height: 100px;">
+             </td>
+         </tr>
+     </table>
+
+</div>
+
+<div class="col-sm-12" style="text-align: center; margin-top: 20px;" >
+<p><i>Once You Share You Experience,just click below to confirm your shipping address and claim your free bottle.</i></p>
+    <p><span style="color:red">{{msg_info}}</span></p>
+    <a href="{{ url_for('address', productid=productid, orderno=orderno, userguid=userguid, reviewcomment=rev_comment) }}" ><img src="/static/images/shipping.png" height="100" width="100"></a>
+<p><i>Continue with your request...</i></p>
+</div>
+
+    </div>
+	 </div>
+
+    </div>
+ </div>
+{% endblock %}

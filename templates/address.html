@@ -1,0 +1,157 @@
+{% extends 'layout.html' %}
+
+{% block title %}NoNothing.us | freegiftnn.com{% endblock %}
+{% block content %}
+ <div class="main">
+    <div class="wrapper">
+
+	 <div class="content clearfix "  ng-show='show_dash==6'>
+
+                <div class="container">
+
+ <div class="products">
+
+<h3>Confirm Your Address</h3>
+<p><i>Please Confirm if this is the address where you like us to ship your free product</i></p>
+</div>
+<div class="col-sm-12 center">
+    <div class="order-form" style="max-width: 583px;">
+<div class="row" style="text-align:left;margin-top:10px; ">
+<form name="myAddressForm" action="{{ url_for('updateshipping') }}" method="post" class="ng-pristine ng-valid">
+
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+  <div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+Name
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="Name" value="{{useraccount['Buyer_Name']}}" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_fname" id="ship_fname"></div>
+<span id="e20" class="error">Required Field</span>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+<div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+Address line1
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="Address line1" value="{{useraccount['ShippingAddress_Line_1']}}" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_addr1" id="ship_addr1"></div>
+<span id="e22" class="error">Required Field</span>
+</div>
+</div>
+</div>
+
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+<div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+Address line2
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="Address line2" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_addr2" id="ship_addr2" value="{{useraccount['ShippingAddress_Line_2']}}"></div>
+</div>
+</div>
+</div>
+
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+<div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+City
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="City" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_city" id="ship_city" value="{{useraccount['ShippingAddress_City']}}"></div>
+<span id="e23" class="error">Required Field</span>
+</div>
+</div>
+</div>
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+
+<div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+State or Region
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="State or Region" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_state" id="ship_state" value="{{useraccount['ShippingAddress_StateOrRegion']}}"></div>
+<span id="e24" class="error">Required Field</span>
+</div>
+</div>
+</div>
+
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+<div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+Country Code
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="Country Code" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_country" id="ship_country" value="{{useraccount['ShippingAddress_CountryCode']}}"></div>
+<span id="e25" class="error">Required Field</span>
+</div>
+</div>
+</div>
+
+<div class="col-sm-12">
+   <div class="form-group">
+
+  <div class="row">
+
+<div class="col-sm-4">
+<label class="label_new" style="background: none;border:none;">
+Postal Code
+</label> </div>
+<div class="col-sm-8">
+<input type="text" placeholder="Postal Code" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ship_zip" id="ship_zip" value="{{useraccount['ShippingAddress_CountryCode']}}"></div>
+<span id="e26" class="error">Required Field</span>
+</div>
+</div>
+</div>
+
+<div class="col-sm-12">
+<div class="row">
+<div class="col-sm-6">
+<div style="text-align:center;" class="cls_007"><span class="cls_007">
+<button class="btn btn-yellow" id="myBtn_1" type="submit">UPDATE </button>
+</span></div> </div>
+<div class="col-sm-6">
+<div style="text-align:center;" class="cls_007"><span class="cls_007">
+<button class="btn btn-yellow" id="myBtn_2" type="submit">EXIT </button>
+</span></div> </div>
+ </div>
+</div>
+
+</form>
+</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+    </div>
+ </div>
+{% endblock %}
